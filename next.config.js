@@ -7,22 +7,20 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'https://i.kinja-img.com',
+        hostname: 'i.kinja-img.com',
         port: '',
-        pathname: '/img/**',
+        pathname: '/**',
       },
     ],
   },
-};
-
-module.exports = {
-  ...nextConfig,
   async rewrites() {
     return [
       {
-        source: '/api',
-        destination: 'https://newsapi.org/v2/',
+        source: '/api/:path*', // Proxy to Backend
+        destination: 'https://newsapi.org/v2/:path*', // Proxy to Backend
       },
     ];
   },
 };
+
+module.exports = nextConfig;

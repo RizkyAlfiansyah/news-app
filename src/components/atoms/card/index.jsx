@@ -1,17 +1,45 @@
 import Image from 'next/image';
 import React from 'react';
+import { Button } from '..';
+import { format } from 'date-fns';
+import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 
-const Card = () => {
+const Card = ({ data }) => {
+  const { title, description, source, url, urlToImage, publishedAt } =
+    data || {};
   return (
-    <div className="lg:w-72 h-64 w-56 bg-white flex flex-col rounded-md shadow-lg">
+    <div className="min-h-64 w-full flex flex-col rounded-md gap-2 group cursor-pointer">
       <div className="w-full">
-        <Image
-          loading="lazy"
-          src="/img/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/176f6f215c9c45306ca8269f8232701e.jpg"
-          alt="Picture of the author"
-          width={300}
-          height={200}
-        />
+        <Link href={url}>
+          <figure className="relative overflow-hidden rounded-md cursor-pointer bg-black group">
+            <img
+              loading="lazy"
+              src={
+                urlToImage
+                  ? urlToImage
+                  : 'https://joadre.com/wp-content/uploads/2019/02/no-image.jpg'
+              }
+              alt="Picture of the author"
+              className="w-full h-48 object-cover group-hover:scale-110 z-50 ease-in duration-75 group-hover:opacity-50 group-hover:blur-sm"
+            />
+            <figcaption className="absolute w-full h-full text-white font-semibold text-sm text-opacity-90 top-0 grid place-items-center -z-10 group-hover:z-50 p-2">
+              <p className="flex gap-2 items-center">
+                <FontAwesomeIcon icon={faEye} /> See More
+              </p>
+            </figcaption>
+          </figure>
+        </Link>
+      </div>
+      <div className="flex flex-col justify-start items-start gap-2">
+        <div className="bg-blue-500 p-1 px-2 rounded-md text-xs text-white">
+          {source.name}
+        </div>
+        <p className="font-bold text-xs group-hover:text-blue-900">{title}</p>
+        <p className="text-xs text-gray-600">
+          {format(new Date(publishedAt), 'MMMM dd, yyyy')}
+        </p>
       </div>
     </div>
   );

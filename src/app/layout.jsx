@@ -1,5 +1,8 @@
 import { Button, Input } from '@/components/atoms';
 import './globals.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import instance from '@/lib/axios';
 
 export const metadata = {
   title: 'News App',
@@ -9,15 +12,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="relative flex min-h-screen flex-col items-center justify-start lg:gap-6 gap-3 bg-slate-100 overflow-x-hidden">
-        <header className="w-full sticky flex justify-between items-center lg:px-12 p-2 lg:py-4 shadow-md bg-white">
+      <body className="relative flex min-h-screen flex-col items-center justify-start lg:gap-4 gap-3 bg-slate-200 overflow-x-hidden">
+        <header className="w-full flex justify-between items-center lg:px-12 p-2 lg:py-4 shadow-md bg-white">
           <h1 className="lg:text-4xl md:text-2xl font-bold text-blue-900">
             NEWS Updates
           </h1>
-          <div className="lg:w-4/12 w-5/12 flex gap-3 items-center justify-start">
-            <Input placeholder="Search News" />
-            <Button>search</Button>
-          </div>
         </header>
         {children}
       </body>
