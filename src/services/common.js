@@ -1,6 +1,6 @@
 import instance from '@/lib/axios';
 
-export async function getNews(params) {
-  const res = await instance.get('/top-headlines', { params: params });
+export async function getNews(endpoint, params) {
+  const res = await instance.get(`/${endpoint}`, { params: params });
   return res;
 }
