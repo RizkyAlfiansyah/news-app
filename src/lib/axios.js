@@ -8,7 +8,7 @@ const instance = axios.create({
   baseURL: BASE_URL,
   headers: {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': 'https://news-app-nu-five.vercel.app/',
     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
     'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY,
   },
