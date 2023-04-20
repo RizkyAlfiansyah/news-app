@@ -26,7 +26,14 @@ pnpm install
 
 ```
 
-3. Run The development Server
+3. Create .env file on the root folder then paste the environtment variables
+
+```bash
+NEXT_PUBLIC_API_URL = https://newsapi.org/v2
+NEXT_PUBLIC_API_KEY = your api key from https://newsapi.org
+```
+
+4. Run The development Server
 
 ```bash
 npm run dev
