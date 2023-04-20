@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+// get the base url from the environment variable
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
-console.log('BASE_URL', BASE_URL);
+
+// create an axios instance
 const instance = axios.create({
   baseURL: BASE_URL,
   headers: {
@@ -10,11 +12,13 @@ const instance = axios.create({
   },
 });
 
+// define a default error object
 const defaultError = {
   status: 500,
   message: 'Something went wrong',
 };
 
+// define a request interceptor
 instance.interceptors.response.use(
   function (response) {
     return response.data;

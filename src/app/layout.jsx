@@ -12,9 +12,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="relative flex min-h-screen flex-col items-center justify-start lg:gap-4 gap-3 bg-slate-200 overflow-x-hidden">
-        <header className="w-full flex justify-between items-center lg:px-12 p-2 lg:py-4 shadow-md bg-white">
-          <h1 className="lg:text-4xl md:text-2xl font-bold text-blue-900">
+      <body className="relative flex min-h-screen flex-col items-center justify-start lg:gap-4 gap-3 bg-slate-100 overflow-x-hidden">
+        <header className="w-full flex xl:justify-center justify-start items-center py-4 shadow-md bg-white">
+          <h1 className="xl:w-[1280px] lg:text-4xl text-2xl font-bold text-blue-900 px-2">
             NEWS Updates
           </h1>
         </header>

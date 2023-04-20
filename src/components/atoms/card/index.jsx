@@ -1,19 +1,25 @@
-import Image from 'next/image';
 import React from 'react';
-import { Button } from '..';
 import { format } from 'date-fns';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar, faEye } from '@fortawesome/free-solid-svg-icons';
 
 const Card = ({ data }) => {
-  const { title, description, source, url, urlToImage, publishedAt } =
-    data || {};
+  // destructuring data from props
+  const { title, source, urlToImage, publishedAt } = data || {};
   return (
     <div className="min-h-64 w-full flex flex-col rounded-md gap-2 group cursor-pointer">
       <div className="w-full">
-        <Link href={url}>
-          <figure className="relative overflow-hidden rounded-md cursor-pointer bg-black group">
+        <Link
+          href={{
+            pathname: '/detail',
+            query: { title: title },
+          }}
+        >
+          <figure
+            className="relative overflow-hidden rounded-md cursor-pointer bg-black group"
+            onClick={() => localStorage.setItem('data', JSON.stringify(data))}
+          >
             <img
               loading="lazy"
               src={
@@ -37,7 +43,8 @@ const Card = ({ data }) => {
           {source.name}
         </div>
         <p className="font-bold text-xs group-hover:text-blue-900">{title}</p>
-        <p className="text-xs text-gray-600">
+        <p className="text-xs text-gray-600 flex gap-2 items-center">
+          <FontAwesomeIcon icon={faCalendar} className="w-4 h-4" />{' '}
           {format(new Date(publishedAt), 'MMMM dd, yyyy')}
         </p>
       </div>
