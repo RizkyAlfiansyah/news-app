@@ -61,8 +61,8 @@ const Details = ({ searchParams }) => {
               ) : (
                 articles &&
                 articles.map((item, idx) => (
-                  <div className="min-w-[300px] max-w-[300px]">
-                    <Card data={item} key={idx} />
+                  <div className="min-w-[300px] max-w-[300px]" key={idx}>
+                    <Card data={item} />
                   </div>
                 ))
               )}
