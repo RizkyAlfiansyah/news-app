@@ -1,6 +1,7 @@
 'use client';
 import { Card } from '@/components/atoms';
 import { useNews } from '@/hooks/global';
+import { getData } from '@/utils/local-storage';
 import { format } from 'date-fns';
 import Link from 'next/link';
 import React from 'react';
@@ -9,9 +10,7 @@ const Details = ({ searchParams }) => {
   // change type of searchParams.title to array
   const titles = searchParams.title.split(' ');
   // get data from local storage
-  const data = localStorage.getItem('data')
-    ? JSON.parse(localStorage.getItem('data'))
-    : [];
+  const data = getData();
   // using custom hook to fetch data from api (newsapi.org) using axios
   const { data: articles, loading } = useNews('top-headlines', {
     q: titles[0],
