@@ -9,7 +9,9 @@ const Details = ({ searchParams }) => {
   // change type of searchParams.title to array
   const titles = searchParams.title.split(' ');
   // get data from local storage
-  const data = (localStorage && JSON.parse(localStorage.getItem('data'))) || {};
+  const data = localStorage.getItem('data')
+    ? JSON.parse(localStorage.getItem('data'))
+    : [];
   // using custom hook to fetch data from api (newsapi.org) using axios
   const { data: articles, loading } = useNews('top-headlines', {
     q: titles[0],
@@ -33,7 +35,7 @@ const Details = ({ searchParams }) => {
             </span>
           </header>
           <div className="max-w-fit bg-blue-500 p-1 px-2 rounded-md text-xs text-white">
-            {source.name}
+            {source?.name}
           </div>
           <img
             src={
