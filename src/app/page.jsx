@@ -1,4 +1,3 @@
-'use client';
 import MainLayout from '@/components/layouts/main.layout';
 import React, { Suspense } from 'react';
 
